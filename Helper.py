@@ -184,7 +184,7 @@ def create_dataset(data, type,target_film, new_resolution = 227, cut_sides = 80)
         ################
         # write_frame(frames, frame_path)
         file_sign.write(frame_path + "\n")
-        #print(write_subs(sentence, file_tr))
+        write_subs(sentence, file_tr)
         ################
         ################
         ################
@@ -192,3 +192,21 @@ def create_dataset(data, type,target_film, new_resolution = 227, cut_sides = 80)
     file_sign.close()
 
 
+def create_vocab(file):
+    f = open(file, 'r')
+    dic = set()
+    for l in f.readlines():
+        for w in l.split():
+            dic.add(w)
+    f.close()
+    f = open('Dataset/vocab.tr','w+')
+    f.write('<unk>')
+    f.write('\n')
+    f.write('<s>')
+    f.write('\n')
+    f.write('</s>')
+    f.write('\n')
+    for el in sorted(dic):
+        f.write(el)
+        f.write('\n')
+    f.close()

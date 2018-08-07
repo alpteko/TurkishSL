@@ -1,4 +1,4 @@
-from Helper import sum_time, convert_delta , sub_time, find_places, create_dataset, safe_create, big_print
+from Helper import sum_time, convert_delta , sub_time, find_places, create_dataset, safe_create, big_print, create_vocab
 
 #########
 #########
@@ -19,7 +19,7 @@ for t in video_dif_list:
 #######
 #######
 
-words = []
+words = ['git']
 target_film = 'titanic'
 subs_file = target_film + '/substitle.srt'
 sl_video_path = target_film + '\SL'
@@ -38,3 +38,4 @@ create_dataset(dev, 'dev', target_film)
 print('Dev ready.')
 create_dataset(test, 'test', target_film)
 print('Test ready.')
+create_vocab('Dataset/train.tr')
